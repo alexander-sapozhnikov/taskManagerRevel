@@ -38,7 +38,7 @@ export function blockKanban(pt, pr){
             }
 
             mainRowsKanban.push({
-                header : "<p style='color: white; margin: 0; background-color: #657584;'> "+ date.toLocaleString("ru", formatDate) + "</p>",
+                header : "<p class='headerForKanbanView' '> "+ date.toLocaleString("ru", formatDate) + "</p>",
                 body : {
                     id : dateId,
                     multi: true,
@@ -167,9 +167,11 @@ function drawKanbanEmployee(dataKanban, employee, date){
             if(heightForTask === 0){
                 heightForTask = obj.theoreticalTimeWork * HeightHourPX
             }
+            console.log(obj.listTask.project.idProject)
+            console.log(project.idProject)
             mapHeightFreeInKanbanOneDay.set(id, heightMaxForBlock)
-            return "<div style = 'height: " +heightForTask+  "px' " +
-                " class = 'taskInKanban'>"
+            return "<div style = 'height: " +heightForTask+  "px'" +
+                " class = 'taskInKanban "+ (obj.listTask.project.idProject !== project.idProject ?"taskFromOtherProject" : "")+"'>"
                 + "<div class = 'textTaskInKanban'>"
                 +"<p>"+ obj.formulation + " </br>" +obj.status.nameStatus + "</p>"
                 + "</div><div class='urgentBlockInTaskInKanban'>"
@@ -234,4 +236,5 @@ function clickOnBeforeDragBlockKanban(context){
         return false
     }
     let source = webix.DragControl.getContext();
- 
+    mapHeightFreeInKanbanOneDay.set(source.from.B.id, HeightKanbanForOneDay)
+}

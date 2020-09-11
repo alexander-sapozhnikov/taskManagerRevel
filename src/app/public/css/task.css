@@ -49,3 +49,13 @@
     height: 100%;
     cursor: pointer;
 }
+
+.headerForKanbanView{
+    color: white;
+    margin: 0;
+    background-color: #657584;
+}
+
+.taskFromOtherProject{
+    background-color: #e3e7ef;
+}

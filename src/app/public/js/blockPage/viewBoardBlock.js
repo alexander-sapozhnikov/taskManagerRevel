@@ -52,7 +52,7 @@ function drawViewBoardBlock(){
         cols:[
             {
                 gravity : 1.3,
-                header:"<p style='color: white; margin: 0; background-color: #475466;'>Проектная команда</p>",
+                header:"<p class='headerForKanbanView' '>Проектная команда</p>",
                 body: {id : "blockProjectTeam",},
                 collapsed:false },
             {
@@ -68,7 +68,7 @@ function drawViewBoardBlock(){
             },
             {
                 gravity : 1.8,
-                header:"<p style='color: white; margin: 0; background-color: #475466;'>Проектная команда</p>",
+                header:"<p class='headerForKanbanView' '>Проектная команда</p>",
                 body: {id : idBlockTaskAndListTask},
                 collapsed:false
             },
