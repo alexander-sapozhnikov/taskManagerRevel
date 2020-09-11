@@ -1,0 +1,15 @@
+sql: expected 5 destination arguments in Scan, not 4
+sql: expected 5 destination arguments in Scan, not 4
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
+sql: expected 2 destination arguments in Scan, not 1
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
