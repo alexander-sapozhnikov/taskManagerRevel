@@ -1,9 +1,8 @@
 import {listTaskData} from "../../data/listTaskData.js";
-import {informAboutErrorWithWorkData} from "../../supporting/helpFunction.js";
 import {taskData} from "../../data/taskData.js";
 import {mainData, Order} from "../../data/mainData.js";
 import {showPage} from "../../showPage.js";
-import {idBlockTaskAndListTask} from "../viewBoardBlock.js";
+import {idBlockTaskAndListTask} from "./viewBoardBlock.js";
 import {getTasksForEmployee} from "./blockKanbanForViewBoard.js";
 
 let activeListTask
@@ -144,41 +143,6 @@ function drawBlockListTask(listTasks){
     }, $$(idBlockListTask))
 }
 
-
-function drawBlockTask(tasks){
-    webix.ui({
-        id : idTask,
-        view:"list",
-        template: (task) => {
-            // let urgent = ""
-            // for(let i = 0; i < task.urgency.idUrgency; ++i){
-            //     urgent += "<i class='fas fa-0.5x fa-angle-up'></i>"
-            // }
-            // "<div class='flexBox' style='margin: 0'>"
-            return  (task.employee.idEmployee > 0 ? "<i class='fas fa-hammer'></i> " : "")
-                + task.formulation
-                + "<span class='editTask fas fa-edit' style = ' font-size : 17px;  float: right'></span>"
-                + " <span class='deleteTask fas fa-trash' style = ' font-size : 17px;  margin-right: 5px; float: right'></span> "
-                // +  "<div class='urgentBlockInTaskInKanban'>" + urgent + "</div> " +
-                // + "</div>"
-            },
-        select: true,
-        data: tasks,
-        drag : true,
-        type : {
-        },
-        onClick: {
-            "deleteTask" : clickDeleteTask,
-        },
-        on: {
-            onBeforeDrag: clickOnBeforeDragBlockTask,
-            onBeforeDrop : clickOnBeforeDropBlockTask,
-            onItemClick : clickEditTask,
-        },
-
-    }, $$(idTask))
-}
-
 function clickAddListTask(){
     let newOrder = new Order(true, mainData.justTitleHeader, mainData.formBody);
 
@@ -252,6 +216,40 @@ function clickChoiceListTask(id){
 }
 
 
+function drawBlockTask(tasks){
+    webix.ui({
+        id : idTask,
+        view:"list",
+        template: (task) => {
+            // let urgent = ""
+            // for(let i = 0; i < task.urgency.idUrgency; ++i){
+            //     urgent += "<i class='fas fa-0.5x fa-angle-up'></i>"
+            // }
+            // "<div class='flexBox' style='margin: 0'>"
+            return  (task.employee.idEmployee > 0 ? "<i class='fas fa-hammer'></i> " : "")
+                + task.formulation
+                + "<span class='editTask fas fa-edit' style = ' font-size : 17px;  float: right'></span>"
+                + " <span class='deleteTask fas fa-trash' style = ' font-size : 17px;  margin-right: 5px; float: right'></span> "
+            // +  "<div class='urgentBlockInTaskInKanban'>" + urgent + "</div> " +
+            // + "</div>"
+        },
+        select: true,
+        data: tasks,
+        drag : true,
+        type : {
+        },
+        onClick: {
+            "deleteTask" : clickDeleteTask,
+        },
+        on: {
+            onBeforeDrag: clickOnBeforeDragBlockTask,
+            onBeforeDrop : clickOnBeforeDropBlockTask,
+            onItemClick : clickEditTask,
+        },
+
+    }, $$(idTask))
+}
+
 function clickOnBeforeDragBlockTask(context){
     if(this.getItem(context.start).employee.idEmployee > 0){
         webix.message("Это задание уже есть на доске")
@@ -281,8 +279,6 @@ function clickOnBeforeDropBlockTask(context){
     taskData.update(task)
     return false
 }
-
-
 
 function clickAddTask(){
     if(!activeListTask){
@@ -361,7 +357,6 @@ function updateDataInBlockTaskAndBlockKanban(){
         getTasksForEmployee(task.employee, new Date(task.dateExecution))
     }
 }
-
 
 function updateDataInTasks(){
     webix.extend($$(idTask), webix.ProgressBar);

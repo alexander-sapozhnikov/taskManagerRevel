@@ -1,7 +1,7 @@
 import {mainData} from "../data/mainData.js";
 import {clickBackToMain, getHeaderIdForThisPage} from "../supporting/helpFunction.js";
 
-const HeightHederDynamic = 50
+const HeightHeaderDynamic = 50
 let order
 
 export function blockHeader(o){
@@ -59,7 +59,7 @@ function drawSearch(){
     webix.ui({
         id : order.headerBlockId,
         css:"webix_light searchHeader",
-        height : HeightHederDynamic,
+        height : HeightHeaderDynamic,
         view:"search", 
         placeholder:"Искать..", 
         value: "",
@@ -81,7 +81,7 @@ function drawSearch(){
 function drawTitleAndBack(){
     webix.ui({
         id : order.headerBlockId,
-        height : HeightHederDynamic,
+        height : HeightHeaderDynamic,
         cols :[
             {
                 view:"label",
