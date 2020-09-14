@@ -4,7 +4,7 @@ import {statusData} from "../../data/statusData.js";
 import {urgencyData} from "../../data/urgencyData.js";
 import {employeeData} from "../../data/employeeData.js";
 import {mainData} from "../../data/mainData.js";
-import {drawField} from "../formBlock.js";
+import {drawField} from "./formBlock.js";
 
 export function changeProjectTeamInProject(){
     let data = {}

@@ -1,9 +1,9 @@
-import {informAboutErrorWithWorkData} from "../supporting/helpFunction.js";
-import {employeeData} from "../data/employeeData.js";
-import {projectData} from "../data/projectData.js";
-import {blockProjectTeam} from "./viewBoard/blockProjectForViewBoard.js"
-import {blockKanban} from "./viewBoard/blockKanbanForViewBoard.js"
-import {blockTasks} from "./viewBoard/blockTaskForViewBoard.js"
+import {informAboutErrorWithWorkData} from "../../supporting/helpFunction.js";
+import {employeeData} from "../../data/employeeData.js";
+import {projectData} from "../../data/projectData.js";
+import {blockProjectTeam} from "./blockProjectForViewBoard.js"
+import {blockKanban} from "./blockKanbanForViewBoard.js"
+import {blockTasks} from "./blockTaskForViewBoard.js"
 
 let order
 let projectTeam

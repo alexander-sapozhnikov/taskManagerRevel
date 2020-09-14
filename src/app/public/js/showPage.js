@@ -1,9 +1,9 @@
 import {mainData} from "./data/mainData.js";
-import {blockHeader} from "./blockPage/headerForPage.js"
+import {blockHeader} from "./blockPage/headerBlock.js"
 import {mainBlock} from "./blockPage/mainBlock.js"
-import {formBlock} from "./blockPage/formBlock.js"
-import {viewBoardBlock} from "./blockPage/viewBoardBlock.js"
-import {editProjectTeamBlock} from "./blockPage/editProjectTeamBlock.js"
+import {formBlock} from "./blockPage/formType/formBlock.js"
+import {viewBoardBlock} from "./blockPage/viewBoard/viewBoardBlock.js"
+import {editProjectTeamBlock} from "./blockPage/editProjectTeam/editProjectTeamBlock.js"
 import {actionEmployeesBlock} from "./blockPage/viewActionEmployeesBlock.js"
 
 
@@ -18,10 +18,7 @@ export function showPage(order){
     }
 
     blockHeader(order)
-    blockBody(order)
-}
 
-function blockBody(order){
     switch(order.typeBody){
         case mainData.mainBody:
             mainBlock(order)

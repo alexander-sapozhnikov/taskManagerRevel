@@ -1,12 +1,12 @@
-import {mainData, Order} from "../data/mainData.js";
-import {showPage} from "../showPage.js";
-import {projectData} from "../data/projectData.js";
-import {employeeData} from "../data/employeeData.js";
-import {deleteEmployeeFromTasks, informAboutErrorWithWorkData} from "../supporting/helpFunction.js";
-import {projectTeamData} from "../data/projectTeamData.js"
-import {blockTeamLead} from "./editProjectTeam/blockTeamLead.js";
-import {blockEmployee} from "./editProjectTeam/blockEmployees.js";
-import {blockProject} from "./editProjectTeam/blockProject.js";
+import {mainData, Order} from "../../data/mainData.js";
+import {showPage} from "../../showPage.js";
+import {projectData} from "../../data/projectData.js";
+import {employeeData} from "../../data/employeeData.js";
+import {deleteEmployeeFromTasks, informAboutErrorWithWorkData} from "../../supporting/helpFunction.js";
+import {projectTeamData} from "../../data/projectTeamData.js"
+import {blockTeamLead} from "./blockTeamLead.js";
+import {blockEmployee} from "./blockEmployees.js";
+import {blockProject} from "./blockProject.js";
 
 export let order
 export const idEmployeeBlock = "employeeDataView"

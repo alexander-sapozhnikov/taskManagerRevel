@@ -1,5 +1,5 @@
 import {projectTeamData} from "../../data/projectTeamData.js";
-import {drawField} from "../formBlock.js";
+import {drawField} from "./formBlock.js";
 import {employeeData} from "../../data/employeeData.js";
 import {mainData} from "../../data/mainData.js";
 

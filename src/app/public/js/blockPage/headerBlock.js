@@ -77,7 +77,6 @@ function drawSearch(){
     });
 }
 
-
 function drawTitleAndBack(){
     webix.ui({
         id : order.headerBlockId,
@@ -123,5 +122,3 @@ function drawJustTitle(){
     $$("justTitleForm").setValue(order.dataHeader.innerHeaderTitle)
 
 }
-
-

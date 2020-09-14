@@ -1,6 +1,6 @@
 import {employeeData} from "../../data/employeeData.js";
 import {projectData} from "../../data/projectData.js";
-import {drawField} from "../formBlock.js";
+import {drawField} from "./formBlock.js";
 
 export function fieldChangeTeamLeadInProjectTeam(){
     let data = {}

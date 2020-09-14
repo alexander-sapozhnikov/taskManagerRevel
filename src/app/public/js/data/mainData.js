@@ -80,7 +80,6 @@ export class Order{
         this.dataHeader = {};
         this.typeBody = typeBody;
         this.dataBody = {};
-
     }
 }
 

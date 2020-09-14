@@ -70,11 +70,11 @@ function drawBlockListTaskAndTask(){
                             onLabel:"Фильтровать по срочности (вкл)",
                             on : {
                                 onChange : function (need) {
-                                   if(need){
-                                       $$(idTask).sort("#urgency#", "desc", (a, b)=>  a.idUrgency > b.idUrgency ? 1 : -1)
-                                   } else {
-                                       $$(idTask).sort("#idTask#", "asc", "int")
-                                   }
+                                    if(need){
+                                        $$(idTask).sort("#urgency#", "desc", (a, b)=>  a.idUrgency > b.idUrgency ? 1 : -1)
+                                    } else {
+                                        $$(idTask).sort("#idTask#", "asc", "int")
+                                    }
                                 }
                             }
                         },
@@ -216,6 +216,7 @@ function clickChoiceListTask(id){
 }
 
 
+
 function drawBlockTask(tasks){
     webix.ui({
         id : idTask,
@@ -279,6 +280,8 @@ function clickOnBeforeDropBlockTask(context){
     taskData.update(task)
     return false
 }
+
+
 
 function clickAddTask(){
     if(!activeListTask){
@@ -357,6 +360,7 @@ function updateDataInBlockTaskAndBlockKanban(){
         getTasksForEmployee(task.employee, new Date(task.dateExecution))
     }
 }
+
 
 function updateDataInTasks(){
     webix.extend($$(idTask), webix.ProgressBar);

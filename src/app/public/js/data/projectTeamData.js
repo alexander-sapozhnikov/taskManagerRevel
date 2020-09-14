@@ -20,21 +20,17 @@ class ProjectTeamData{
         return dataUsualAction.getSomething(URL + idProjectTeam);
     }
 
-    getByProject(projectTeam){
-        return dataUsualAction.getSomething(URL + "project/"+ projectTeam.idProjectTeam);
-    }
-
-    remove(item, index){
-        if(item.idProjectTeam) {
+    remove(projectTeam, idProjectTeam){
+        if(projectTeam.idProjectTeam) {
             //dlt team
-            dataUsualAction.remove(item, URL)
-        } else if(item.idProject) {
+            dataUsualAction.remove(projectTeam, URL)
+        } else if(projectTeam.idProject) {
             //dlt project in team
-            item.nameProject = ""
-            projectData.update(item)
+            projectTeam.nameProject = ""
+            projectData.update(projectTeam)
         } else {
             //dlt employee in team
-            employeeAndProjectTeamData.remove(index, item.idEmployee)
+            employeeAndProjectTeamData.remove(idProjectTeam, projectTeam.idEmployee)
         }
     }
 

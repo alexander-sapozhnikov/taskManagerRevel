@@ -21,13 +21,13 @@ class EmployeeData{
         return dataUsualAction.getSomething(URL + idEmployee);
     }
 
-    getByLoginAndPassword(item){
+    getByLoginAndPassword(employee){
         return fetch(URL  + "authorization", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(item)})
+            body: JSON.stringify(employee)})
             .catch(error => {informAboutErrorWithWorkData(error)})
             .then(response => {
                 if (!response.ok) informAboutErrorWithWorkData(response, "Попробуйте ещё раз!")
@@ -41,17 +41,17 @@ class EmployeeData{
         return dataUsualAction.getSomething(URL + "projectTeam/" + projectTeam.idProjectTeam);
     }
 
-    remove(item){
-        dataUsualAction.remove(item, URL)
+    remove(employee){
+        dataUsualAction.remove(employee, URL)
     }
 
-    save(item){
-        dataUsualAction.save(item, URL)
+    save(employee){
+        dataUsualAction.save(employee, URL)
     }
 
-    update(item, idEmployee){
+    update(employee, idEmployee){
         item.idEmployee = idEmployee
-        dataUsualAction.update(item, URL)
+        dataUsualAction.update(employee, URL)
     }
 }
 

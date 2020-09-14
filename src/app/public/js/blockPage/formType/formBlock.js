@@ -1,9 +1,9 @@
-import {mainData} from "../data/mainData.js";
-import {choiseDataBase, clickBackToMain} from "../supporting/helpFunction.js";
-import {showPage} from "../showPage.js";
-import {fieldProject, fieldEmployee, fieldProjectTeam, fieldDelete} from "./formType/fieldInMainBlock.js";
-import {fieldChangeTeamLeadInProjectTeam, fieldAddEmployeeInProjectTeam, fieldAddProjectInProjectTeam} from "./formType/fieldInProjectTeam.js";
-import {changeProjectTeamInProject, fieldTask, fieldListTask} from "./formType/fieldInView.js";
+import {mainData} from "../../data/mainData.js";
+import {choiseDataBase, clickBackToMain} from "../../supporting/helpFunction.js";
+import {showPage} from "../../showPage.js";
+import {fieldProject, fieldEmployee, fieldProjectTeam, fieldDelete} from "./fieldInMainBlock.js";
+import {fieldChangeTeamLeadInProjectTeam, fieldAddEmployeeInProjectTeam, fieldAddProjectInProjectTeam} from "./fieldInProjectTeam.js";
+import {changeProjectTeamInProject, fieldTask, fieldListTask} from "./fieldInView.js";
 
 let order
 let buttons = [

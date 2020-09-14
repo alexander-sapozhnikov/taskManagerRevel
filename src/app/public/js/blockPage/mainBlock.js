@@ -1,6 +1,6 @@
 import {mainData, Order} from "../data/mainData.js";
 import {getHeaderIdForThisPage, choiseDataBase,
-    defineStateThroughTitleHeaderOrId, informAboutErrorWithWorkData} from "../supporting/helpFunction.js";
+    defineStateThroughTitleHeaderOrId} from "../supporting/helpFunction.js";
 import {showPage} from "../showPage.js";
 
 let order
@@ -138,7 +138,6 @@ function clickEditItem(_, id){
     showPage(order)
     return false
 }
-
 
 function clickOnItem(id){
     if(order.dataBody.state === mainData.stateEmployee){

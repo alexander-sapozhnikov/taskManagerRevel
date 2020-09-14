@@ -1,92 +1,9 @@
 import {mainData, Order} from "./data/mainData.js";
 import {showPage} from "./showPage.js";
 import {defineStateThroughTitleHeaderOrId} from "./supporting/helpFunction.js";
-import {employeeData} from "./data/employeeData.js";
 
 
-webix.ready(function(){
-    webix.ui({
-        id : "mainPage",
-        rows:[
-            {},
-            {
-                cols:[
-                    {},
-                    {
-                        rows:[
-                                {
-                                    view:"label",
-                                    label: "Добро пожаловать в Task Manager!",
-                                    align:"center"
-                                },
-                                {
-                                    id : "logIn",
-                                    view:"form",
-                                    scroll:false,
-                                    width: 400,
-                                    elements:[
-                                        {
-                                            name : "login",
-                                            view:"text",
-                                            label:"Login:"
-                                        },
-                                        {
-                                            name : "password",
-                                            view:"text",
-                                            type:"password",
-                                            label:"Password"
-                                        },
-                                        {
-                                            margin:5,
-                                            cols:[
-                                                {
-                                                    view:"button",
-                                                    label:"Войти" ,
-                                                    type:"form",
-                                                    click : clickCheckLoginAndPassword
-                                                },
-                                            ]
-                                        }
-                                    ],
-                                    rules:{
-                                        login: webix.rules.isNotEmpty,
-                                    }
-                                },
-                            ]
-                    },
-                    {}
-                ]
-            },
-            {},
-        ]
-    });
-});
-
-function clickCheckLoginAndPassword(){
-    if(!$$("logIn").validate()){
-        webix.message({
-            text:"Логин не должен быть пустым!",
-            type:"error",
-            expire: 2000,
-        })
-        return
-    }
-
-    employeeData.getByLoginAndPassword($$("logIn").getValues())
-        .then(response => {
-            if(response.data.idEmployee > 0){
-                drawMainPage()
-            } else if(!response.error){
-                webix.message({
-                    text:"Неверный логин или пароль.",
-                    type:"error",
-                    expire: 2000,
-                })
-            }
-        })
-}
-
-function drawMainPage(){
+export function drawMainPage(){
     webix.ui({
         id : "mainPage",
         rows:[
@@ -161,7 +78,7 @@ function drawMainPage(){
 }
 
 
-let clickToMenu = function(id){
+function clickToMenu(id){
     let order = new Order(false, mainData.searchHeader, mainData.mainBody)
 
     order.dataHeader = {

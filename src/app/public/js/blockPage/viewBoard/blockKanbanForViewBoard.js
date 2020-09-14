@@ -1,5 +1,6 @@
 import {taskData} from "../../data/taskData.js";
-import {clickEditTask, idTask} from "./blockTaskForViewBoard.js"
+import {idTask} from "./blockTaskForViewBoard.js"
+import {clickEditTask} from "./blockTaskForViewBoard.js";
 
 let projectTeam
 let project
