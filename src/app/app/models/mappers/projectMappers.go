@@ -1,19 +1,19 @@
 package mappers
 
 import (
-	"app/app/models"
+	"app/app/models/entities"
 	. "app/app/supporting"
 	"database/sql"
 )
 
-func ProjectAllGet() (projectAll []models.Project, err error) {
+func ProjectAllGet() (projectAll []entities.Project, err error) {
 	sqlString := "SELECT idproject, nameproject, p.idprojectteam, p.nameprojectteam from project LEFT JOIN projectteam p on project.idprojectteam = p.idprojectteam ORDER BY idproject"
 	rows, err := DB.Query(sqlString)
 
 	defer CloseRows(rows)
 
 	for err == nil && rows.Next() {
-		var project models.Project
+		var project entities.Project
 		var idProjectTeam sql.NullInt64
 		var nameProjectTeam sql.NullString
 		err = rows.Scan(&project.IdProject, &project.NameProject, &idProjectTeam, &nameProjectTeam)
@@ -27,7 +27,7 @@ func ProjectAllGet() (projectAll []models.Project, err error) {
 	return projectAll, err
 }
 
-func ProjectGet(idProject int64) (project models.Project, err error) {
+func ProjectGet(idProject int64) (project entities.Project, err error) {
 	sqlString := "SELECT idproject, nameproject, " +
 		"p.idprojectteam, p.nameprojectteam, " +
 		"p.idteamlead, firstname, middlename, lastname " +
@@ -52,12 +52,12 @@ func ProjectGet(idProject int64) (project models.Project, err error) {
 			&idTeamLead, &firstName, &middleName, &lastName)
 
 		if err == nil {
-			project.ProjectTeam = models.ProjectTeam{
+			project.ProjectTeam = entities.ProjectTeam{
 				IdProjectTeam:   idProjectTeam.Int64,
 				NameProjectTeam: nameProjectTeam.String,
 			}
 
-			project.ProjectTeam.TeamLead = models.Employee{
+			project.ProjectTeam.TeamLead = entities.Employee{
 				IdEmployee: idTeamLead.Int64,
 				FirstName:  firstName.String,
 				MiddleName: middleName.String,
@@ -69,14 +69,14 @@ func ProjectGet(idProject int64) (project models.Project, err error) {
 	return project, err
 }
 
-func ProjectGetByProjectTeam(idProjectTeam int64) (projectAll []models.Project, err error) {
+func ProjectGetByProjectTeam(idProjectTeam int64) (projectAll []entities.Project, err error) {
 	sqlString := "SELECT idproject, nameproject from project LEFT JOIN projectteam p on project.idprojectteam = p.idprojectteam WHERE p.idprojectteam = $1"
 	rows, err := DB.Query(sqlString, idProjectTeam)
 
 	defer CloseRows(rows)
 
 	for err == nil && rows.Next() {
-		var project models.Project
+		var project entities.Project
 		err = rows.Scan(&project.IdProject, &project.NameProject)
 		if err == nil {
 			projectAll = append(projectAll, project)
@@ -86,7 +86,7 @@ func ProjectGetByProjectTeam(idProjectTeam int64) (projectAll []models.Project, 
 	return projectAll, err
 }
 
-func ProjectSave(project models.Project) (err error) {
+func ProjectSave(project entities.Project) (err error) {
 	if project.ProjectTeam.IdProjectTeam == 0 {
 		sqlString := `INSERT INTO project (nameproject) VALUES ($1);`
 		_, err = DB.Exec(sqlString, project.NameProject)
@@ -98,7 +98,7 @@ func ProjectSave(project models.Project) (err error) {
 	return err
 }
 
-func ProjectUpdate(project models.Project) (err error) {
+func ProjectUpdate(project entities.Project) (err error) {
 	if project.NameProject == "" {
 		if project.ProjectTeam.IdProjectTeam != 0 {
 			sqlString := `UPDATE project SET idprojectteam = $1 WHERE idproject = $2;`
@@ -114,7 +114,7 @@ func ProjectUpdate(project models.Project) (err error) {
 	return err
 }
 
-func ProjectDelete(project models.Project) error {
+func ProjectDelete(project entities.Project) error {
 	sqlString := `DELETE FROM project WHERE idproject = $1`
 	_, err := DB.Exec(sqlString, project.IdProject)
 	return err

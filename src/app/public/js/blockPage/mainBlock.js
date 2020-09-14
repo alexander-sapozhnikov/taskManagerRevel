@@ -43,6 +43,9 @@ export function mainBlock(o){
 
     dataBase.getAll()
         .then( response => {
+                    if(!response.data){
+                        response.data = []
+                    }
                     response.data.push({addNew: true})
                     $$(order.bodyBlockId).parse(response.data);
                     $$(order.bodyBlockId).refresh();

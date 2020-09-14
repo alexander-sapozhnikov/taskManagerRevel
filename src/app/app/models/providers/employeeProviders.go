@@ -1,8 +1,8 @@
 package providers
 
 import (
-	"app/app/mappers"
-	"app/app/models"
+	"app/app/models/entities"
+	"app/app/models/mappers"
 	. "app/app/supporting"
 )
 
@@ -30,7 +30,7 @@ func EmployeeGetByProjectTeam(idProjectTeam int64) map[string]interface{} {
 	return data
 }
 
-func EmployeeGetByLoginAndPassword(employee models.Employee, err error) map[string]interface{} {
+func EmployeeGetByLoginAndPassword(employee entities.Employee, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		employee, err = mappers.EmployeeGetByLoginAndPassword(employee)
@@ -42,7 +42,7 @@ func EmployeeGetByLoginAndPassword(employee models.Employee, err error) map[stri
 	return data
 }
 
-func EmployeeSave(employee models.Employee, err error) map[string]interface{} {
+func EmployeeSave(employee entities.Employee, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.EmployeeSave(employee))
@@ -52,7 +52,7 @@ func EmployeeSave(employee models.Employee, err error) map[string]interface{} {
 	return data
 }
 
-func EmployeeUpdate(employee models.Employee, err error) map[string]interface{} {
+func EmployeeUpdate(employee entities.Employee, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.EmployeeUpdate(employee))
@@ -62,7 +62,7 @@ func EmployeeUpdate(employee models.Employee, err error) map[string]interface{} 
 	return data
 }
 
-func EmployeeDelete(employee models.Employee, err error) map[string]interface{} {
+func EmployeeDelete(employee entities.Employee, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.EmployeeDelete(employee))

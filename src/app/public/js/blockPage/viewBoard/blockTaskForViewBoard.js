@@ -25,6 +25,7 @@ function drawBlockListTaskAndTask(){
         type:"clean",
         rows:[
             {
+                id : "listTaskAccordion",
                 header: "Список задач",
                 body : {
                     rows : [
@@ -45,6 +46,7 @@ function drawBlockListTaskAndTask(){
                 }
             },
             {
+                id : "taskAccordion",
                 header: "Задачи",
                 collapsed: true,
                 body : {
@@ -97,7 +99,7 @@ function drawBlockListTaskAndTask(){
     }, $$(idBlockTaskAndListTask))
 
     $$("blockTasksFind").attachEvent("onTimedKeyPress",function(){
-        var value = this.getValue().toLowerCase();
+        let value = this.getValue().toLowerCase();
         $$(idTask).filter(function(obj){
             return obj.formulation.toLowerCase().indexOf(value) > -1
                 || obj.description.toLowerCase().indexOf(value) > -1;
@@ -136,7 +138,7 @@ function drawBlockListTask(listTasks){
 
         },
         on: {
-            onItemClick: clickChoiceListTask,
+            onItemDblClick: clickChoiceListTask,
         },
 
     }, $$(idBlockListTask))
@@ -243,6 +245,8 @@ function clickChoiceListTask(id){
         })
         return
     }
+
+    $$("listTaskAccordion").define("collapsed", "true")
 
     updateDataInTasks()
 }

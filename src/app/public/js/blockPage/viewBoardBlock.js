@@ -68,7 +68,7 @@ function drawViewBoardBlock(){
             },
             {
                 gravity : 1.8,
-                header:"<p class='headerForKanbanView' '>Проектная команда</p>",
+                header:"<p class='headerForKanbanView' '>Списки и задачи</p>",
                 body: {id : idBlockTaskAndListTask},
                 collapsed:false
             },

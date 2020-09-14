@@ -1,4 +1,4 @@
-package models
+package entities
 
 type EmployeeAndProjectTeam struct {
 	IdEmployeeAndProjectTeam int64 `json:"idEmployeeAndProjectTeam"`

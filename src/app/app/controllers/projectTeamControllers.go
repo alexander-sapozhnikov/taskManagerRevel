@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"app/app/models"
-	"app/app/providers"
+	"app/app/models/entities"
+	"app/app/models/providers"
 
 	"github.com/revel/revel"
 )
@@ -16,19 +16,19 @@ func (c App) ProjectTeamGet(idProjectTeam int64) revel.Result {
 }
 
 func (c App) ProjectTeamSave() revel.Result {
-	var projectTeam models.ProjectTeam
+	var projectTeam entities.ProjectTeam
 	err := c.Params.BindJSON(&projectTeam)
 	return c.RenderJSON(providers.ProjectTeamSave(projectTeam, err))
 }
 
 func (c App) ProjectTeamUpdate() revel.Result {
-	var projectTeam models.ProjectTeam
+	var projectTeam entities.ProjectTeam
 	err := c.Params.BindJSON(&projectTeam)
 	return c.RenderJSON(providers.ProjectTeamUpdate(projectTeam, err))
 }
 
 func (c App) ProjectTeamDelete() revel.Result {
-	var projectTeam models.ProjectTeam
+	var projectTeam entities.ProjectTeam
 	err := c.Params.BindJSON(&projectTeam)
 	return c.RenderJSON(providers.ProjectTeamDelete(projectTeam, err))
 }

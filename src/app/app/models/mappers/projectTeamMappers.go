@@ -1,17 +1,17 @@
 package mappers
 
 import (
-	"app/app/models"
+	"app/app/models/entities"
 	. "app/app/supporting"
 	"database/sql"
 )
 
-func ProjectTeamAllGet() (projectTeamAll []models.ProjectTeam, err error) {
+func ProjectTeamAllGet() (projectTeamAll []entities.ProjectTeam, err error) {
 	sqlString := "SELECT idprojectteam, nameprojectteam, e.idemployee, e.firstname, e.middlename, e.lastname FROM projectteam LEFT JOIN employee e on e.idemployee = projectteam.idteamlead ORDER BY idprojectteam"
 	rows, err := DB.Query(sqlString)
 	defer CloseRows(rows)
 
-	var projectTeam models.ProjectTeam
+	var projectTeam entities.ProjectTeam
 	for err == nil && rows.Next() {
 		projectTeam, err = scanRows(rows)
 		if err == nil {
@@ -22,7 +22,7 @@ func ProjectTeamAllGet() (projectTeamAll []models.ProjectTeam, err error) {
 	return projectTeamAll, err
 }
 
-func ProjectTeamGet(idProjectTeam int64) (projectTeam models.ProjectTeam, err error) {
+func ProjectTeamGet(idProjectTeam int64) (projectTeam entities.ProjectTeam, err error) {
 	sqlString := "SELECT idprojectteam, nameprojectteam, e.idemployee, e.firstname, e.middlename, e.lastname FROM  projectTeam left join employee e on e.idemployee = projectteam.idteamlead WHERE  idprojectTeam = $1"
 	rows, err := DB.Query(sqlString, idProjectTeam)
 	defer CloseRows(rows)
@@ -34,7 +34,7 @@ func ProjectTeamGet(idProjectTeam int64) (projectTeam models.ProjectTeam, err er
 	return projectTeam, err
 }
 
-func scanRows(rows *sql.Rows) (projectTeam models.ProjectTeam, err error) {
+func scanRows(rows *sql.Rows) (projectTeam entities.ProjectTeam, err error) {
 	var idTeamLead sql.NullInt64
 	var firstName sql.NullString
 	var middleName sql.NullString
@@ -44,7 +44,7 @@ func scanRows(rows *sql.Rows) (projectTeam models.ProjectTeam, err error) {
 		&idTeamLead, &firstName, &middleName, &lastName)
 
 	if err == nil {
-		projectTeam.TeamLead = models.Employee{
+		projectTeam.TeamLead = entities.Employee{
 			IdEmployee: idTeamLead.Int64,
 			FirstName:  firstName.String,
 			MiddleName: middleName.String,
@@ -56,7 +56,7 @@ func scanRows(rows *sql.Rows) (projectTeam models.ProjectTeam, err error) {
 	return projectTeam, err
 }
 
-func ProjectTeamSave(projectTeam models.ProjectTeam) (err error) {
+func ProjectTeamSave(projectTeam entities.ProjectTeam) (err error) {
 
 	var lastInsertId int64 = 0
 
@@ -71,7 +71,7 @@ func ProjectTeamSave(projectTeam models.ProjectTeam) (err error) {
 
 	if lastInsertId > 0 && err == nil {
 		for _, item := range projectTeam.Employees {
-			err = EmployeeAndProjectTeamAdd(models.EmployeeAndProjectTeam{
+			err = EmployeeAndProjectTeamAdd(entities.EmployeeAndProjectTeam{
 				IdEmployee:    item.IdEmployee,
 				IdProjectTeam: lastInsertId,
 			})
@@ -81,13 +81,13 @@ func ProjectTeamSave(projectTeam models.ProjectTeam) (err error) {
 	return err
 }
 
-func ProjectTeamUpdate(projectTeam models.ProjectTeam) error {
+func ProjectTeamUpdate(projectTeam entities.ProjectTeam) error {
 	sqlString := `UPDATE projectTeam SET idteamlead = $1 WHERE idprojectTeam = $2;`
 	_, err := DB.Exec(sqlString, projectTeam.TeamLead.IdEmployee, projectTeam.IdProjectTeam)
 	return err
 }
 
-func ProjectTeamDelete(projectTeam models.ProjectTeam) error {
+func ProjectTeamDelete(projectTeam entities.ProjectTeam) error {
 	sqlString := `DELETE FROM projectTeam WHERE idprojectTeam = $1`
 	_, err := DB.Exec(sqlString, projectTeam.IdProjectTeam)
 	return err

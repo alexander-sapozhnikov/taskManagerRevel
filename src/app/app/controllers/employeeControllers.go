@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"app/app/models"
-	"app/app/providers"
+	"app/app/models/entities"
+	"app/app/models/providers"
 	"github.com/revel/revel"
 )
 
@@ -19,24 +19,24 @@ func (c App) EmployeeGetByProjectTeam(idProjectTeam int64) revel.Result {
 }
 
 func (c App) EmployeeGetByLoginAndPassword() revel.Result {
-	var employee models.Employee
+	var employee entities.Employee
 	err := c.Params.BindJSON(&employee)
 	return c.RenderJSON(providers.EmployeeGetByLoginAndPassword(employee, err))
 }
 
 func (c App) EmployeeSave() revel.Result {
-	var employee models.Employee
+	var employee entities.Employee
 	err := c.Params.BindJSON(&employee)
 	return c.RenderJSON(providers.EmployeeSave(employee, err))
 }
 func (c App) EmployeeUpdate() revel.Result {
-	var employee models.Employee
+	var employee entities.Employee
 	err := c.Params.BindJSON(&employee)
 	return c.RenderJSON(providers.EmployeeUpdate(employee, err))
 }
 
 func (c App) EmployeeDelete() revel.Result {
-	var employee models.Employee
+	var employee entities.Employee
 	err := c.Params.BindJSON(&employee)
 	return c.RenderJSON(providers.EmployeeDelete(employee, err))
 }

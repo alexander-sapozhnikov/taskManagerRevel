@@ -78,7 +78,7 @@ function clickCheckLoginAndPassword(){
                 drawMainPage()
             } else if(!response.error){
                 webix.message({
-                    text:"Неверные данные!",
+                    text:"Неверный логин или пароль.",
                     type:"error",
                     expire: 2000,
                 })
@@ -158,16 +158,6 @@ function drawMainPage(){
         dataBase : mainData.stateProject
     }
     showPage(order)
-
-    // let order = new Order(false, mainData.titleAndBackHeader, mainData.viewBoardBody);
-    // order.dataHeader = {
-    //     headerTitle : mainData.headerTitleMap.get(mainData.projectHeaderId),
-    //     innerHeaderTitle : "Проект : dg"
-    // }
-    // order.dataBody = {
-    //     data : {idProject: 8, nameProject: "dg", projectTeam: {idProjectTeam: 1, nameProjectTeam: "Google team"}, id: 1598276266385}
-    // }
-    // showPage(order)
 }
 
 
@@ -185,7 +175,6 @@ let clickToMenu = function(id){
 
     showPage(order)
 }
-
 
 
 let popup = {

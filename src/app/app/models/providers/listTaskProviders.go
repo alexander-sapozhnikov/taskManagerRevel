@@ -1,8 +1,8 @@
 package providers
 
 import (
-	"app/app/mappers"
-	"app/app/models"
+	"app/app/models/entities"
+	"app/app/models/mappers"
 	. "app/app/supporting"
 )
 
@@ -14,7 +14,7 @@ func ListTaskGetByProject(idProject int64) map[string]interface{} {
 	return data
 }
 
-func ListTaskSave(listTask models.ListTask, err error) map[string]interface{} {
+func ListTaskSave(listTask entities.ListTask, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.ListTaskSave(listTask))
@@ -24,7 +24,7 @@ func ListTaskSave(listTask models.ListTask, err error) map[string]interface{} {
 	return data
 }
 
-func ListTaskUpdate(listTask models.ListTask, err error) map[string]interface{} {
+func ListTaskUpdate(listTask entities.ListTask, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.ListTaskUpdate(listTask))
@@ -34,7 +34,7 @@ func ListTaskUpdate(listTask models.ListTask, err error) map[string]interface{} 
 	return data
 }
 
-func ListTaskDelete(listTask models.ListTask, err error) map[string]interface{} {
+func ListTaskDelete(listTask entities.ListTask, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.ListTaskDelete(listTask))

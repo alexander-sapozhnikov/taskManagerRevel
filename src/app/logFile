@@ -13,3 +13,18 @@ DB Connected
 sql: expected 2 destination arguments in Scan, not 1
 user=postgres password='1' dbname=postgres sslmode=disable
 DB Connected
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
+pq: INSERT или UPDATE в таблице "task" нарушает ограничение внешнего ключа "task_idlisttask_fkey"
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
+pq: INSERT или UPDATE в таблице "employeeandprojectteam" нарушает ограничение внешнего ключа "employeeandprojectteam_idemployee_fkey"
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
+pq: UPDATE или DELETE в таблице "projectteam" нарушает ограничение внешнего ключа "project_idprojectteam_fkey" таблицы "project"
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected
+user=postgres password='1' dbname=postgres sslmode=disable
+DB Connected

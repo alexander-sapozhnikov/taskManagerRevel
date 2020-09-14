@@ -2,7 +2,6 @@
     display: flex;
 }
 
-
 .textTaskInKanban{
     width: 100%;
     display: flex;
@@ -57,5 +56,5 @@
 }
 
 .taskFromOtherProject{
-    background-color: #e3e7ef;
+    color: #b3b3b3;
 }

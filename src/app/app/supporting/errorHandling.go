@@ -20,6 +20,9 @@ func ErrorInDatabase(err error) interface{} {
 
 func CloseRows(rows *sql.Rows){
 	if rows != nil {
-		rows.Close()
+		err := rows.Close()
+		if err != nil {
+			log.Println(err.Error())
+		}
 	}
 }

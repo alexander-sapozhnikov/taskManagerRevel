@@ -1,7 +1,7 @@
-package models
+package entities
 
 type ListTask struct {
-	IdListTask     int64 `json:"idListTask"`
-	NameListTask   string `json:"nameListTask"`
-	Project Project `json:"project"`
+	IdListTask   int64   `json:"idListTask"`
+	NameListTask string  `json:"nameListTask"`
+	Project      Project `json:"project"`
 }

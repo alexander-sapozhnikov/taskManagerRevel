@@ -1,8 +1,8 @@
 package providers
 
 import (
-	"app/app/mappers"
-	"app/app/models"
+	"app/app/models/entities"
+	"app/app/models/mappers"
 	. "app/app/supporting"
 )
 
@@ -22,7 +22,7 @@ func ProjectTeamGet(idProjectTeam int64) map[string]interface{} {
 	return data
 }
 
-func ProjectTeamSave(projectTeam models.ProjectTeam, err error) map[string]interface{} {
+func ProjectTeamSave(projectTeam entities.ProjectTeam, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.ProjectTeamSave(projectTeam))
@@ -32,7 +32,7 @@ func ProjectTeamSave(projectTeam models.ProjectTeam, err error) map[string]inter
 	return data
 }
 
-func ProjectTeamUpdate(projectTeam models.ProjectTeam, err error) map[string]interface{} {
+func ProjectTeamUpdate(projectTeam entities.ProjectTeam, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.ProjectTeamUpdate(projectTeam))
@@ -42,7 +42,7 @@ func ProjectTeamUpdate(projectTeam models.ProjectTeam, err error) map[string]int
 	return data
 }
 
-func ProjectTeamDelete(projectTeam models.ProjectTeam, err error) map[string]interface{} {
+func ProjectTeamDelete(projectTeam entities.ProjectTeam, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.ProjectTeamDelete(projectTeam))

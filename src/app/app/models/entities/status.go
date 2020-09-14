@@ -1,4 +1,4 @@
-package models
+package entities
 
 type Status struct {
 	IdStatus     int64 `json:"idStatus"`

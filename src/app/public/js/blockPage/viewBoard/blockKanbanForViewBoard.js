@@ -167,8 +167,6 @@ function drawKanbanEmployee(dataKanban, employee, date){
             if(heightForTask === 0){
                 heightForTask = obj.theoreticalTimeWork * HeightHourPX
             }
-            console.log(obj.listTask.project.idProject)
-            console.log(project.idProject)
             mapHeightFreeInKanbanOneDay.set(id, heightMaxForBlock)
             return "<div style = 'height: " +heightForTask+  "px'" +
                 " class = 'taskInKanban "+ (obj.listTask.project.idProject !== project.idProject ?"taskFromOtherProject" : "")+"'>"

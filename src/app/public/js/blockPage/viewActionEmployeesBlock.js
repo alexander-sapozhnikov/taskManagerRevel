@@ -5,7 +5,7 @@ import {showPage} from "../showPage.js";
 
 let projectTeam
 let order
-const HeightHourPX = 65
+const HeightHourPX = 67
 const PADDING = 4
 let listHours =[{id : 1, date : 1}]
 
@@ -41,8 +41,8 @@ function makeColumnEmployees(employees){
             body :{
                 id : "timeLine",
                 view:"list",
-                template:"<div style = 'height: " +HeightHourPX+ "px; display: flex; justify-content: center; align-content: center " +
-                    "text-align: center;'><p style='text-align: center'>#date#</p></div>",
+                template:"<div style = 'height: " + (HeightHourPX + 6) + "px; display: flex; justify-content: center; " +
+                    " border-bottom: 2px dotted;'><p style='text-align: center; margin: auto;'>#date#</p></div>",
                 type : {
                     height : "auto"
 
@@ -56,15 +56,16 @@ function makeColumnEmployees(employees){
     ]
 
 
-    employees.forEach((employee) => {
-        kanbanList.push({
-            header: employee.firstName + " " + employee.lastName,
-            body :{
-                id : "employee_" + employee.idEmployee,
-            },
+    if(employees.forEach) {
+        employees.forEach((employee) => {
+            kanbanList.push({
+                header: employee.firstName + " " + employee.lastName,
+                body: {
+                    id: "employee_" + employee.idEmployee,
+                },
+            })
         })
-    })
-
+    }
     if(projectTeam.teamLead.idEmployee > 0){
         kanbanList.push({
             header: projectTeam.teamLead.firstName + " " + projectTeam.teamLead.lastName,

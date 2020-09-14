@@ -26,7 +26,6 @@ class DataUsualAction{
             body: JSON.stringify(item)})
             .catch(error => {informAboutErrorWithWorkData(error)})
             .then(response => {
-                console.log(!response.ok || response.error)
                 if (!response.ok || response.error) informAboutErrorWithWorkData(response, "Удаления не произошло.")
                 else informAboutSuccess("Успешно удаленно!")})
     }

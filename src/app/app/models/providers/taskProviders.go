@@ -1,10 +1,10 @@
 package providers
 
 import (
-	"app/app/mappers"
-	"app/app/models"
-	"time"
+	"app/app/models/entities"
+	"app/app/models/mappers"
 	. "app/app/supporting"
+	"time"
 )
 
 func TaskGet(idTask int64) map[string]interface{} {
@@ -52,7 +52,7 @@ func TaskGetByEmployeeAndActiveTask(idEmployee int64) map[string]interface{} {
 }
 
 
-func TaskSave(task models.Task, err error) map[string]interface{} {
+func TaskSave(task entities.Task, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.TaskSave(task))
@@ -62,7 +62,7 @@ func TaskSave(task models.Task, err error) map[string]interface{} {
 	return data
 }
 
-func TaskUpdate(task models.Task, err error) map[string]interface{} {
+func TaskUpdate(task entities.Task, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.TaskUpdate(task))
@@ -72,7 +72,7 @@ func TaskUpdate(task models.Task, err error) map[string]interface{} {
 	return data
 }
 
-func TaskDelete(task models.Task, err error) map[string]interface{} {
+func TaskDelete(task entities.Task, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.TaskDelete(task))

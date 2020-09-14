@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"app/app/providers"
+	"app/app/models/providers"
 	"github.com/revel/revel"
 )
 

@@ -1,12 +1,12 @@
 package providers
 
 import (
-	"app/app/mappers"
-	"app/app/models"
+	"app/app/models/entities"
+	"app/app/models/mappers"
 	. "app/app/supporting"
 )
 
-func EmployeeAndProjectTeamAdd(employeeAndProjectTeam models.EmployeeAndProjectTeam, err error) map[string]interface{} {
+func EmployeeAndProjectTeamAdd(employeeAndProjectTeam entities.EmployeeAndProjectTeam, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.EmployeeAndProjectTeamAdd(employeeAndProjectTeam))
@@ -16,7 +16,7 @@ func EmployeeAndProjectTeamAdd(employeeAndProjectTeam models.EmployeeAndProjectT
 	return data
 }
 
-func EmployeeAndProjectTeamRemove(employeeAndProjectTeam models.EmployeeAndProjectTeam, err error) map[string]interface{} {
+func EmployeeAndProjectTeamRemove(employeeAndProjectTeam entities.EmployeeAndProjectTeam, err error) map[string]interface{} {
 	data := make(map[string]interface{})
 	if err == nil {
 		data["error"] = ErrorInDatabase(mappers.EmployeeAndProjectTeamRemove(employeeAndProjectTeam))

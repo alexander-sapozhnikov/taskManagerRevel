@@ -1,7 +1,7 @@
 package providers
 
 import (
-	"app/app/mappers"
+	"app/app/models/mappers"
 	. "app/app/supporting"
 )
 

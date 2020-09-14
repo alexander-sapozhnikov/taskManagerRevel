@@ -17,7 +17,7 @@ class EmployeeData{
         return dataUsualAction.getSomething(URL)
     }
 
-    getById(idEmployee){
+    get(idEmployee){
         return dataUsualAction.getSomething(URL + idEmployee);
     }
 
